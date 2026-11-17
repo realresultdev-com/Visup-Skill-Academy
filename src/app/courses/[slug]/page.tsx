@@ -1,15 +1,20 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { coursesData, getCourseBySlug, siteData } from "@/data/academyData";
+import {
+  getAllCourseSlugs,
+  getCourseBySlug,
+  siteData,
+} from "@/data/academyData";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  return coursesData.map((course) => ({
-    slug: course.slug,
+  const slugs = getAllCourseSlugs();
+  return slugs.map((slug) => ({
+    slug,
   }));
 }
 
@@ -132,18 +137,21 @@ export default async function CourseDetailPage({ params }: PageProps) {
     ],
   };
 
-  const faqSchema = course.faqs && course.faqs.length > 0 ? {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: course.faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.q,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.a,
-      },
-    })),
-  } : null;
+  const faqSchema =
+    course.faqs && course.faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: course.faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.q,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: faq.a,
+            },
+          })),
+        }
+      : null;
 
   return (
     <>
@@ -187,18 +195,44 @@ export default async function CourseDetailPage({ params }: PageProps) {
           </ol>
         </nav>
 
-        {/* Hero Section: H1 & Subtitle */}
+        {/* Hero Section: H1 & Hero Content */}
         <header className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <div className="max-w-4xl">
+            {/* Tagline */}
             <span className="text-xs font-bold uppercase tracking-wider text-amber-600">
-              Career-Focused Certification
+              {course.heroInfo?.tagline || "Career-Focused Certification"}
             </span>
+
+            {/* H1 */}
             <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-neutral-900 sm:text-4xl lg:text-5xl leading-tight">
               {course.h1}
             </h1>
+
+            {/* Subtitle */}
             <p className="mt-4 text-lg text-neutral-700 leading-relaxed">
               {course.subtitle}
             </p>
+
+            {/* Badges from Hero Slider */}
+            {course.heroInfo?.badges && course.heroInfo.badges.length > 0 && (
+              <div className="mt-5 flex flex-wrap gap-2.5">
+                {course.heroInfo.badges.map((badge) => (
+                  <span
+                    key={badge}
+                    className="inline-flex items-center rounded-full border border-gray-200 bg-neutral-50 px-3.5 py-1 text-xs font-semibold text-neutral-800 shadow-2xs sm:text-sm"
+                  >
+                    {badge}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {/* Subtext */}
+            {course.heroInfo?.subtext && (
+              <p className="mt-4 text-sm font-medium italic text-amber-700 sm:text-base">
+                {course.heroInfo.subtext}
+              </p>
+            )}
 
             {/* Quick Specs */}
             <div className="mt-6 flex flex-wrap gap-4 text-sm text-neutral-700">
@@ -218,17 +252,24 @@ export default async function CourseDetailPage({ params }: PageProps) {
               </div>
             </div>
 
-            {/* Syllabus Download Button (if available) */}
-            {course.syllabusPdf && (
-              <div className="mt-6">
+            {/* CTA Buttons */}
+            <div className="mt-6 flex flex-wrap items-center gap-4">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-full bg-amber-600 px-6 py-2.5 text-sm font-bold text-white shadow-xs hover:bg-amber-700 active:scale-98 transition duration-150"
+              >
+                {course.heroInfo?.ctaText || "Enroll Now"}
+              </Link>
+
+              {course.syllabusPdf && (
                 <a
                   href={course.syllabusPdf}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-md bg-amber-600 px-5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-amber-700 transition"
+                  className="inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-neutral-800 shadow-2xs hover:bg-neutral-50 transition"
                 >
                   <svg
-                    className="h-4 w-4"
+                    className="h-4 w-4 text-neutral-600"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -242,8 +283,8 @@ export default async function CourseDetailPage({ params }: PageProps) {
                   </svg>
                   Download Syllabus PDF
                 </a>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </header>
 

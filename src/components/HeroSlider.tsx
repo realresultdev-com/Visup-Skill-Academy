@@ -19,7 +19,7 @@ export const heroSlides: HeroSlide[] = [
     badges: ["Project Based Learning", "Expert Mentorship", "Hands on Internship"],
     subtext: "Click to unlock your job-ready future!",
     ctaText: "Grab Your Seat",
-    ctaLink: "/courses/devstack-fullstack-devops",
+    ctaLink: "/courses/devstack-engineer",
   },
   {
     tagline: "Excel to AI in One Powerful Journey !",
@@ -43,7 +43,7 @@ export const heroSlides: HeroSlide[] = [
     badges: ["Project Based Learning", "Expert Mentorship", "Live Project Internship"],
     subtext: "One Click Closer to Your Dream Career !",
     ctaText: "Get Started Today",
-    ctaLink: "/courses/mern-stack",
+    ctaLink: "/courses/software-development",
   },
   {
     tagline: "Where Imagination Meets Innovation",

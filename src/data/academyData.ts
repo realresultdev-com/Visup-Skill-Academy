@@ -38,13 +38,22 @@ export interface CourseFAQ {
   a: string;
 }
 
+export interface CourseHeroInfo {
+  tagline: string;
+  badges: string[];
+  subtext: string;
+  ctaText: string;
+}
+
 export interface Course {
   slug: string;
+  aliases?: string[];
   h1: string;
   subtitle: string;
   seoTitle?: string;
   metaDescription: string;
   keywords: string[];
+  heroInfo: CourseHeroInfo;
   durationHours: number | null;
   modules: CourseModule[] | null;
   tools: string[];
@@ -90,19 +99,27 @@ export const siteData: SiteData = {
 
 export const coursesData: Course[] = [
   {
-    slug: "devstack-fullstack-devops",
-    h1: "DevStack: Full Stack with DevOps course in Coimbatore",
+    slug: "devstack-engineer",
+    aliases: ["devstack-fullstack-devops"],
+    h1: "Devstack Engineer course in Coimbatore",
     subtitle:
       "Full stack web development with React, Node.js, MongoDB and DevOps tools like Git, Docker and Jenkins.",
-    seoTitle: "Full Stack Developer Course with DevOps in Coimbatore | DevStack | Vinsup",
+    seoTitle: "Devstack Engineer Course in Coimbatore | Full Stack & DevOps | Vinsup",
     metaDescription:
-      "DevStack full stack + DevOps course in Coimbatore covering HTML, CSS, JavaScript, React, Node.js, Express, MongoDB, Git, Docker and Jenkins, with projects, internship and placement support.",
+      "Devstack Engineer full stack + DevOps course in Coimbatore covering HTML, CSS, JavaScript, React, Node.js, Express, MongoDB, Git, Docker and Jenkins, with project based learning, expert mentorship, and hands-on internship.",
     keywords: [
+      "devstack engineer course coimbatore",
       "full stack developer course coimbatore",
       "devops course coimbatore",
       "full stack with devops training coimbatore",
       "software training institute coimbatore",
     ],
+    heroInfo: {
+      tagline: "Learn What No One's Teaching",
+      badges: ["Project Based Learning", "Expert Mentorship", "Hands on Internship"],
+      subtext: "Click to unlock your job-ready future!",
+      ctaText: "Grab Your Seat",
+    },
     durationHours: null,
     modules: null,
     tools: [
@@ -118,18 +135,34 @@ export const coursesData: Course[] = [
       "Jenkins",
     ],
     projects: null,
-    careerRoles: null,
+    careerRoles: [
+      "Full Stack Developer",
+      "DevOps Engineer",
+      "Backend Developer",
+      "Frontend Developer",
+    ],
     syllabusPdf: null,
-    faqs: null,
+    faqs: [
+      {
+        q: "What is the Devstack Engineer course in Coimbatore?",
+        a: "A comprehensive program combining full stack web development (React, Node.js, Express, MongoDB) with essential modern DevOps tools (Git, Docker, Jenkins), live project learning, and internship placement.",
+      },
+      {
+        q: "Who can enroll in the Devstack Engineer course?",
+        a: "Freshers, engineering students, and IT professionals aiming to master full stack engineering and cloud DevOps practices.",
+      },
+    ],
   },
   {
     slug: "data-verse-pro",
-    h1: "Data Science with Gen AI course in Coimbatore",
+    h1: "Data Verse Pro: Data Science with Gen AI course in Coimbatore",
     subtitle:
       "A progression from Excel and SQL through machine learning and deep learning to generative AI.",
+    seoTitle: "Data Verse Pro Course in Coimbatore | Data Science & Generative AI | Vinsup",
     metaDescription:
-      "A 200-hour Data Science and Generative AI course covering Python, SQL, Power BI, machine learning, deep learning, NLP, LLMs, RAG and AI agents, with live projects, internship and placement support.",
+      "A 200-hour Data Science and Generative AI course covering Python, SQL, Power BI, machine learning, deep learning, NLP, LLMs, RAG and AI agents, with real-time projects, expert mentorship, and hands-on internship.",
     keywords: [
+      "data verse pro coimbatore",
       "data science course in coimbatore",
       "data science training coimbatore",
       "generative ai course coimbatore",
@@ -137,6 +170,12 @@ export const coursesData: Course[] = [
       "AI course coimbatore",
       "data science institute coimbatore with placement",
     ],
+    heroInfo: {
+      tagline: "Excel to AI in One Powerful Journey !",
+      badges: ["Real Time Projects", "Expert Mentorship", "Hands on Internship"],
+      subtext: "Click to Unlock Your Job-Ready Future !",
+      ctaText: "Enroll Now",
+    },
     durationHours: 200,
     modules: [
       {
@@ -418,10 +457,11 @@ export const coursesData: Course[] = [
   },
   {
     slug: "data-analytics",
-    h1: "AI-Ready Data Analytics course in Coimbatore",
-    subtitle: "Excel, SQL, Power BI & Python, powered by AI.",
+    h1: "Data Analytics course in Coimbatore",
+    subtitle: "Upgrade Your Skills. Unlock High-Demand Jobs with Excel, SQL, Power BI & Python.",
+    seoTitle: "Data Analytics Course in Coimbatore | Excel, SQL, Power BI & Python | Vinsup",
     metaDescription:
-      "Job-focused data analytics course covering advanced Excel and VBA, MySQL, Power BI with advanced DAX, Looker Studio, Python and AI tools, with live projects, internship and placement support.",
+      "Job-focused data analytics course covering advanced Excel and VBA, MySQL, Power BI with advanced DAX, Looker Studio, Python and AI tools, with hands on training, expert mentorship, live project internship and placement support.",
     keywords: [
       "data analytics course in coimbatore",
       "data analyst course coimbatore",
@@ -430,6 +470,12 @@ export const coursesData: Course[] = [
       "excel training coimbatore",
       "business analytics course coimbatore",
     ],
+    heroInfo: {
+      tagline: "Upgrade Your Skills. Unlock High-Demand Jobs.",
+      badges: ["Hands on Training", "Expert Mentorship", "Live Project Internship"],
+      subtext: "One Click to Kickstart your Data Career !",
+      ctaText: "Begin Your Journey",
+    },
     durationHours: null,
     modules: [
       {
@@ -594,21 +640,28 @@ export const coursesData: Course[] = [
     ],
   },
   {
-    slug: "mern-stack",
-    h1: "AI-Integrated MERN Stack course in Coimbatore",
-    subtitle: "Full-stack JavaScript with AI-assisted development.",
-    seoTitle:
-      "MERN Stack Course in Coimbatore with AI Tools | Full Stack Training | Vinsup",
+    slug: "software-development",
+    aliases: ["mern-stack"],
+    h1: "Software Development course in Coimbatore",
+    subtitle: "Turn Clicks into Careers with Full-Stack JavaScript & Modern AI Development.",
+    seoTitle: "Software Development Course in Coimbatore | Full Stack MERN Training | Vinsup",
     metaDescription:
-      "Full stack MERN course covering HTML, CSS, JavaScript, React, Node.js, Express, MongoDB, REST APIs, auth and deployment, plus AI coding with Cursor, Cline and Google Antigravity. Projects, internship and placement support.",
+      "Full stack software development course covering HTML, CSS, JavaScript, React, Node.js, Express, MongoDB, REST APIs, auth, CI/CD, and AI coding with project based learning, expert mentorship, and live project internship.",
     keywords: [
+      "software development course in coimbatore",
+      "software developer training coimbatore",
       "mern stack course in coimbatore",
       "full stack developer course coimbatore",
       "react js course coimbatore",
       "node js training coimbatore",
       "web development course coimbatore",
-      "full stack training with placement coimbatore",
     ],
+    heroInfo: {
+      tagline: "Turn Clicks into Careers",
+      badges: ["Project Based Learning", "Expert Mentorship", "Live Project Internship"],
+      subtext: "One Click Closer to Your Dream Career !",
+      ctaText: "Get Started Today",
+    },
     durationHours: null,
     modules: [
       {
@@ -774,6 +827,7 @@ export const coursesData: Course[] = [
       },
     ],
     careerRoles: [
+      "Software Developer",
       "Junior Frontend Developer",
       "Junior Backend Developer",
       "Full-Stack MERN Developer",
@@ -785,8 +839,8 @@ export const coursesData: Course[] = [
       "https://www.vinsupskillacademy.com/brochures/vinsup-ai-integrated-mern-stack-syllabus.pdf",
     faqs: [
       {
-        q: "Which is the best full stack / MERN course in Coimbatore?",
-        a: "Covers HTML, CSS, JavaScript, React, Node.js, Express and MongoDB, with REST APIs, auth, CI/CD deployment and a full AI-assisted development module.",
+        q: "Which is the best software development / MERN course in Coimbatore?",
+        a: "Covers HTML, CSS, JavaScript, React, Node.js, Express and MongoDB, with REST APIs, auth, CI/CD deployment, and an AI-assisted development module.",
       },
       {
         q: "Which AI coding tools will I learn?",
@@ -794,11 +848,11 @@ export const coursesData: Course[] = [
       },
       {
         q: "Do I need prior coding experience?",
-        a: "No. Starts with the developer environment, Git and HTML.",
+        a: "No. Starts with the developer environment, Git and HTML fundamentals.",
       },
       {
         q: "What will I build?",
-        a: "Ten mini projects and a capstone MERN application.",
+        a: "Ten mini projects and an enterprise capstone application.",
       },
       {
         q: "Will I learn deployment?",
@@ -813,17 +867,26 @@ export const coursesData: Course[] = [
   },
   {
     slug: "ui-ux-design",
-    h1: "AI-Powered UI/UX & Graphic Design course in Coimbatore",
-    subtitle: "Figma, AI design tools & the Adobe suite.",
+    aliases: ["ui-ux-graphic-design"],
+    h1: "UI/UX & Graphic Design course in Coimbatore",
+    subtitle: "Where Imagination Meets Innovation with Figma, AI design tools & Adobe suite.",
+    seoTitle: "UI/UX & Graphic Design Course in Coimbatore | Figma & Adobe Training | Vinsup",
     metaDescription:
-      "Course covering UX research, Figma, AI design tools, Adobe apps and CorelDRAW, with portfolio projects, internship and placement support.",
+      "Course covering UX research, Figma, AI design tools, Adobe apps and CorelDRAW, with hands on training, expert mentorship, live project internship, and portfolio placement support.",
     keywords: [
       "ui ux course coimbatore",
+      "ui ux graphic design course coimbatore",
       "figma course coimbatore",
       "graphic design course coimbatore",
       "web design course coimbatore",
       "product design course coimbatore",
     ],
+    heroInfo: {
+      tagline: "Where Imagination Meets Innovation",
+      badges: ["Hands On Training", "Expert Mentorship", "Live Project Internship"],
+      subtext: "The Creative World needs you — Tap to Begin",
+      ctaText: "Register Now",
+    },
     durationHours: null,
     modules: [
       {
@@ -998,10 +1061,11 @@ export const coursesData: Course[] = [
   },
   {
     slug: "digital-marketing",
-    h1: "AI & Digital Marketing course in Coimbatore",
-    subtitle: "SEO, AEO, Google & Meta Ads with AI tools.",
+    h1: "Digital Marketing course in Coimbatore",
+    subtitle: "Become the Digital Expert Every Company Needs with SEO, AEO, Google & Meta Ads.",
+    seoTitle: "Digital Marketing Course in Coimbatore | SEO, Google & Meta Ads Training | Vinsup",
     metaDescription:
-      "A 100-hour, AI-powered digital marketing course covering SEO, AEO and GEO, Google and Meta Ads, WordPress, Shopify, email and WhatsApp automation, and GA4, with live projects, certifications, internship and placement support.",
+      "A 100-hour, AI-powered digital marketing course covering SEO, AEO and GEO, Google and Meta Ads, WordPress, Shopify, email and WhatsApp automation, and GA4, with hands on training, expert mentorship, and live project internship.",
     keywords: [
       "digital marketing course in coimbatore",
       "digital marketing training coimbatore",
@@ -1010,6 +1074,12 @@ export const coursesData: Course[] = [
       "social media marketing course coimbatore",
       "digital marketing institute coimbatore with placement",
     ],
+    heroInfo: {
+      tagline: "Become the Digital Expert Every Company Needs",
+      badges: ["Hands on Training", "Expert Mentorship", "Live Project Internship"],
+      subtext: "One Click Closer to Your Dream Career !",
+      ctaText: "Join Now",
+    },
     durationHours: 100,
     modules: [
       {
@@ -1222,6 +1292,19 @@ export const coursesData: Course[] = [
   },
 ];
 
+export function getAllCourseSlugs(): string[] {
+  const slugs: string[] = [];
+  for (const course of coursesData) {
+    slugs.push(course.slug);
+    if (course.aliases) {
+      slugs.push(...course.aliases);
+    }
+  }
+  return slugs;
+}
+
 export function getCourseBySlug(slug: string): Course | undefined {
-  return coursesData.find((course) => course.slug === slug);
+  return coursesData.find(
+    (course) => course.slug === slug || (course.aliases && course.aliases.includes(slug))
+  );
 }

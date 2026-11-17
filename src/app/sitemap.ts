@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { siteData, coursesData } from "@/data/academyData";
+import { siteData, getAllCourseSlugs } from "@/data/academyData";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteData.url.endsWith("/")
@@ -24,8 +24,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route === "" ? 1.0 : route === "/courses" ? 0.9 : 0.8,
   }));
 
-  const courseEntries: MetadataRoute.Sitemap = coursesData.map((course) => ({
-    url: `${baseUrl}/courses/${course.slug}`,
+  const courseEntries: MetadataRoute.Sitemap = getAllCourseSlugs().map((slug) => ({
+    url: `${baseUrl}/courses/${slug}`,
     lastModified: "2026-11-17",
     changeFrequency: "weekly",
     priority: 0.9,
