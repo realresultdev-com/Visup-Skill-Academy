@@ -1,8 +1,10 @@
 import type { MetadataRoute } from "next";
+import { siteData } from "@/data/academyData";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://visupskillacademy.com";
+  const baseUrl = siteData.url.endsWith("/")
+    ? siteData.url.slice(0, -1)
+    : siteData.url;
 
   return {
     rules: {

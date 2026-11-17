@@ -1,10 +1,12 @@
 import type { MetadataRoute } from "next";
+import { siteData, coursesData } from "@/data/academyData";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://visupskillacademy.com";
+  const baseUrl = siteData.url.endsWith("/")
+    ? siteData.url.slice(0, -1)
+    : siteData.url;
 
-  const routes = [
+  const staticRoutes = [
     "",
     "/about",
     "/courses",
@@ -15,10 +17,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
   ];
 
-  return routes.map((route) => ({
+  const staticEntries: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
     url: `${baseUrl}${route}`,
-    lastModified: new Date(),
+    lastModified: "2026-11-17",
     changeFrequency: route === "" ? "daily" : "weekly",
-    priority: route === "" ? 1 : 0.8,
+    priority: route === "" ? 1.0 : route === "/courses" ? 0.9 : 0.8,
   }));
+
+  const courseEntries: MetadataRoute.Sitemap = coursesData.map((course) => ({
+    url: `${baseUrl}/courses/${course.slug}`,
+    lastModified: "2026-11-17",
+    changeFrequency: "weekly",
+    priority: 0.9,
+  }));
+
+  return [...staticEntries, ...courseEntries];
 }
