@@ -71,10 +71,6 @@ export default function HeroSlider() {
     setCurrent((prev) => (prev + 1) % heroSlides.length);
   }, []);
 
-  const prevSlide = useCallback(() => {
-    setCurrent((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
-  }, []);
-
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
@@ -145,9 +141,8 @@ export default function HeroSlider() {
           })}
         </div>
 
-        {/* Carousel Controls */}
-        <div className="mt-10 flex items-center justify-between border-t border-gray-100 pt-4">
-          {/* Indicators */}
+        {/* Carousel Indicators */}
+        <div className="mt-10 flex items-center justify-center border-t border-gray-100 pt-4">
           <div className="flex items-center gap-2">
             {heroSlides.map((slide, index) => (
               <button
@@ -162,50 +157,6 @@ export default function HeroSlider() {
                 }`}
               />
             ))}
-          </div>
-
-          {/* Navigation Arrows */}
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={prevSlide}
-              aria-label="Previous slide"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white text-neutral-700 hover:bg-neutral-50 active:bg-neutral-100 transition cursor-pointer"
-            >
-              <svg
-                className="h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 19.5L8.25 12l7.5-7.5"
-                />
-              </svg>
-            </button>
-            <button
-              type="button"
-              onClick={nextSlide}
-              aria-label="Next slide"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white text-neutral-700 hover:bg-neutral-50 active:bg-neutral-100 transition cursor-pointer"
-            >
-              <svg
-                className="h-4 w-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                />
-              </svg>
-            </button>
           </div>
         </div>
       </div>
