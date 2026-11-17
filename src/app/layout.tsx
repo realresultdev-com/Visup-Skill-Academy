@@ -26,6 +26,14 @@ export const metadata: Metadata = {
   authors: [{ name: siteData.name }],
   creator: siteData.name,
   publisher: siteData.name,
+  formatDetection: {
+    email: false,
+    address: true,
+    telephone: true,
+  },
+  alternates: {
+    canonical: siteData.url,
+  },
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -72,26 +80,77 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = {
+  // Enhanced Schema.org Graph (WebSite + EducationalOrganization + LocalBusiness)
+  // Compliant with Claude SEO and Google Search Central Guidelines
+  const schemaGraph = {
     "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    name: siteData.name,
-    url: siteData.url,
-    description: siteData.description,
-    telephone: siteData.phone,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "148, A B Gopalsamy Koil Street, Sridevi Nagar, Ganapathy",
-      addressLocality: "Coimbatore",
-      addressRegion: "Tamil Nadu",
-      postalCode: "641006",
-      addressCountry: "IN",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: siteData.geo.lat,
-      longitude: siteData.geo.lng,
-    },
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": `${siteData.url}#website`,
+        url: siteData.url,
+        name: siteData.name,
+        description: siteData.description,
+        publisher: {
+          "@id": `${siteData.url}#organization`,
+        },
+        potentialAction: {
+          "@type": "SearchAction",
+          target: `${siteData.url}courses?q={search_term_string}`,
+          "query-input": "required name=search_term_string",
+        },
+      },
+      {
+        "@type": ["EducationalOrganization", "LocalBusiness"],
+        "@id": `${siteData.url}#organization`,
+        name: siteData.name,
+        legalName: siteData.name,
+        url: siteData.url,
+        logo: {
+          "@type": "ImageObject",
+          url: siteData.ogImage,
+          caption: siteData.name,
+        },
+        image: siteData.ogImage,
+        description: siteData.description,
+        telephone: siteData.phone,
+        priceRange: "₹₹",
+        hasMap: `https://maps.google.com/?q=${siteData.geo.lat},${siteData.geo.lng}`,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress:
+            "148, A B Gopalsamy Koil Street, Sridevi Nagar, Ganapathy",
+          addressLocality: "Coimbatore",
+          addressRegion: "Tamil Nadu",
+          postalCode: "641006",
+          addressCountry: "IN",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: siteData.geo.lat,
+          longitude: siteData.geo.lng,
+        },
+        areaServed: {
+          "@type": "City",
+          name: "Coimbatore",
+        },
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+            ],
+            opens: "09:00",
+            closes: "19:00",
+          },
+        ],
+      },
+    ],
   };
 
   return (
@@ -102,7 +161,7 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaGraph) }}
         />
       </head>
       <body className="min-h-full flex flex-col bg-white text-neutral-900">

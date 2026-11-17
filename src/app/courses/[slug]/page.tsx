@@ -74,7 +74,7 @@ export default async function CourseDetailPage({ params }: PageProps) {
     notFound();
   }
 
-  // Schema.org structured data for SEO
+  // Schema.org Course Schema compliant with Claude SEO standards
   const courseSchema = {
     "@context": "https://schema.org",
     "@type": "Course",
@@ -82,8 +82,9 @@ export default async function CourseDetailPage({ params }: PageProps) {
     description: course.metaDescription,
     provider: {
       "@type": "EducationalOrganization",
+      "@id": `${siteData.url}#organization`,
       name: siteData.name,
-      sameAs: siteData.url,
+      url: siteData.url,
       telephone: siteData.phone,
       address: {
         "@type": "PostalAddress",
@@ -94,6 +95,21 @@ export default async function CourseDetailPage({ params }: PageProps) {
         postalCode: "641006",
         addressCountry: "IN",
       },
+    },
+    educationalCredentialAwarded:
+      "Certificate of Course Completion & Live Project Internship Experience Letter",
+    ...(course.durationHours
+      ? { timeRequired: `PT${course.durationHours}H` }
+      : {}),
+    ...(course.careerRoles && course.careerRoles.length > 0
+      ? { occupationalCategory: course.careerRoles[0] }
+      : {}),
+    offers: {
+      "@type": "Offer",
+      category: "Paid",
+      priceCurrency: "INR",
+      availability: "https://schema.org/InStock",
+      url: `${siteData.url}courses/${course.slug}`,
     },
     hasCourseInstance: [
       {
@@ -233,6 +249,13 @@ export default async function CourseDetailPage({ params }: PageProps) {
                 {course.heroInfo.subtext}
               </p>
             )}
+
+            {/* GEO Self-Contained Citability Passage for AI Search (Google AI Overviews, Perplexity, ChatGPT Search) */}
+            <div className="mt-6 p-4 rounded-xl border border-amber-200/60 bg-amber-50/30 text-sm text-neutral-800 leading-relaxed">
+              <span className="font-bold text-neutral-900">Program Summary: </span>
+              {course.h1} at Vinsup Skill Academy (Ganapathy, Coimbatore) provides industry-mentored, practical training covering{" "}
+              {course.tools.slice(0, 5).join(", ")}. Designed for freshers and career switchers, the course includes live hands-on projects, an internship certificate, and guaranteed placement interview assistance through Vinsup&apos;s Job Readiness Program (JRP) and Interview Opportunity Program (IOP).
+            </div>
 
             {/* Quick Specs */}
             <div className="mt-6 flex flex-wrap gap-4 text-sm text-neutral-700">
