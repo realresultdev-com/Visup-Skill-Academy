@@ -120,36 +120,204 @@ export const coursesData: Course[] = [
       subtext: "Click to unlock your job-ready future!",
       ctaText: "Grab Your Seat",
     },
-    durationHours: null,
-    modules: null,
-    tools: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "React",
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "Git",
-      "Docker",
-      "Jenkins",
+    durationHours: 120,
+    modules: [
+      {
+        title: "Module 1: Modern Web Foundations & Semantic UI Engineering",
+        topics: [
+          "HTML5 Semantic Architecture & Web Accessibility (WCAG)",
+          "Modern CSS3, Flexbox, Grid & Responsive Layouts",
+          "Tailwind CSS Utility-First Styling & Design Systems",
+          "Web Performance Optimization & Asset Management",
+        ],
+      },
+      {
+        title: "Module 2: Advanced JavaScript & TypeScript for Enterprise",
+        topics: [
+          "Core JavaScript Deep Dive & Asynchronous Event Loop",
+          "Modern ES6+ Syntax, Modules, Promises & Async/Await",
+          "TypeScript Fundamentals: Types, Interfaces, Generics & Strict Typing",
+          "DOM Manipulation, Fetch API & Browser Storage",
+        ],
+      },
+      {
+        title: "Module 3: React 19 Frontend Framework & Next.js Architecture",
+        topics: [
+          "React Architecture: Components, Props, JSX & State",
+          "Modern React Hooks (useState, useEffect, useMemo, useCallback, useRef)",
+          "Client-Side State Management (Zustand / Redux Toolkit)",
+          "Next.js App Router, Server Components & Dynamic Routing",
+          "Connecting Frontend Interfaces to RESTful APIs",
+        ],
+      },
+      {
+        title: "Module 4: Node.js & Express.js Backend Architecture",
+        topics: [
+          "Node.js Runtime Architecture, Event-Driven I/O & Streams",
+          "Building Scalable RESTful APIs with Express.js",
+          "Middleware Design, Error Handling & Request Validation",
+          "Authentication & Security: JWT, Bcrypt, CORS & Rate Limiting",
+        ],
+      },
+      {
+        title: "Module 5: Database Engineering (MongoDB & Mongoose)",
+        topics: [
+          "NoSQL Database Design & MongoDB Schema Modeling",
+          "CRUD Operations, Indexing Strategies & Query Optimization",
+          "Mongoose ODM: Schema Validation, Middleware & Hooks",
+          "Aggregation Pipelines & Relational Lookups ($lookup)",
+          "MongoDB Atlas Cloud Deployment & Backup Strategies",
+        ],
+      },
+      {
+        title: "Module 6: Version Control, Git & Collaborative Engineering",
+        topics: [
+          "Git Fundamentals: Branching, Staging, Rebasing & Merge Strategies",
+          "GitHub Collaborative Workflows, Pull Requests & Code Reviews",
+          "Semantic Versioning & Conventional Commits",
+        ],
+      },
+      {
+        title: "Module 7: Linux Systems & Server Administration",
+        topics: [
+          "Linux Shell Navigation, File Permissions & User Management",
+          "Bash Scripting & Process Management (Systemd & PM2)",
+          "Networking Basics, Ports, Firewalls & SSH Key Management",
+          "Nginx Web Server: Reverse Proxy, Load Balancing & SSL Certificates",
+        ],
+      },
+      {
+        title: "Module 8: Containerization with Docker & Microservices",
+        topics: [
+          "Docker Core Concepts: Images, Containers & Registries",
+          "Writing Production Dockerfiles & Multi-Stage Builds",
+          "Managing Multi-Container Stacks with Docker Compose",
+          "Container Networking, Volumes & Environment Variables",
+        ],
+      },
+      {
+        title: "Module 9: Continuous Integration & Continuous Deployment (CI/CD)",
+        topics: [
+          "CI/CD Fundamentals & DevOps Culture",
+          "Jenkins Installation, Pipeline as Code (Jenkinsfile) & Webhooks",
+          "GitHub Actions Workflows for Automated Testing & Linting",
+          "Automated Deployment Pipelines to Staging & Production",
+        ],
+      },
+      {
+        title: "Module 10: Cloud Infrastructure (AWS) & Deployment",
+        topics: [
+          "AWS Cloud Fundamentals: EC2, S3, VPC & IAM Security",
+          "Deploying Containerized MERN Applications on AWS EC2",
+          "Cloud Storage Management with Amazon S3 & CloudFront CDN",
+          "Production Domain Configuration, DNS & Free SSL with Let's Encrypt",
+        ],
+      },
+      {
+        title: "Module 11: Monitoring, Logging & Container Orchestration Basics",
+        topics: [
+          "Introduction to Kubernetes (K8s): Pods, Deployments & Services",
+          "Application Monitoring with Prometheus & Grafana",
+          "Log Aggregation, Health Checks & Site Reliability Principles",
+        ],
+      },
+      {
+        title: "Module 12: DevStack Capstone Project & Placement Bootcamp",
+        topics: [
+          "End-to-End Enterprise Full Stack + DevOps Project Build",
+          "GitHub Portfolio & Technical Architecture Presentation",
+          "Job Readiness Program (JRP) & AI Mock Technical Interviews",
+          "Interview Opportunity Program (IOP) Guaranteed Company Drives",
+        ],
+      },
     ],
-    projects: null,
+    tools: [
+      "HTML5",
+      "CSS3",
+      "JavaScript (ES6+)",
+      "TypeScript",
+      "React 19",
+      "Next.js",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Mongoose",
+      "MongoDB Atlas",
+      "REST API",
+      "Postman",
+      "Git",
+      "GitHub",
+      "Linux (Ubuntu)",
+      "Nginx",
+      "Docker",
+      "Docker Compose",
+      "Jenkins",
+      "GitHub Actions",
+      "AWS (EC2, S3)",
+      "PM2",
+      "Cursor / VS Code",
+    ],
+    projects: [
+      {
+        area: "Enterprise DevOps Capstone",
+        description:
+          "Architect and deploy a containerized full-stack application on AWS EC2 with automated CI/CD via Jenkins, Nginx reverse proxy, automated testing, and SSL security.",
+      },
+      {
+        area: "Full-Stack Microservices Application",
+        description:
+          "Build a multi-service web platform with React frontend, Node.js/Express backend API, and MongoDB database orchestrated via Docker Compose.",
+      },
+      {
+        area: "Automated CI/CD Pipeline with Jenkins",
+        description:
+          "Construct an end-to-end continuous integration pipeline with automated linting, unit testing, Docker image building, and automated deployment to server.",
+      },
+      {
+        area: "Production Linux & Nginx Reverse Proxy Setup",
+        description:
+          "Configure an Ubuntu production server with Nginx load balancer, Let's Encrypt SSL certificates, PM2 process management, and firewall security.",
+      },
+      {
+        area: "Secure JWT Authentication & Role-Based Access API",
+        description:
+          "Develop a production-grade RESTful API featuring bcrypt encryption, JWT authentication, role-based authorization, and rate limiting.",
+      },
+    ],
     careerRoles: [
       "Full Stack Developer",
       "DevOps Engineer",
-      "Backend Developer",
-      "Frontend Developer",
+      "MERN Stack Developer",
+      "Backend / API Engineer",
+      "Frontend Engineer",
+      "Cloud & DevOps Trainee",
     ],
-    syllabusPdf: null,
+    syllabusPdf:
+      "https://www.vinsupskillacademy.com/brochures/vinsup-devstack-fullstack-devops-syllabus.pdf",
     faqs: [
       {
-        q: "What is the Devstack Engineer course in Coimbatore?",
-        a: "A comprehensive program combining full stack web development (React, Node.js, Express, MongoDB) with essential modern DevOps tools (Git, Docker, Jenkins), live project learning, and internship placement.",
+        q: "What is the Devstack Engineer course at Vinsup Skill Academy?",
+        a: "The Devstack Engineer course is an intensive 120-hour program in Coimbatore combining full stack web development (React, Node.js, Express, MongoDB) with DevOps engineering (Git, Docker, Jenkins, CI/CD, Linux, AWS). It is designed to take students from coding fundamentals to automated cloud deployment.",
       },
       {
-        q: "Who can enroll in the Devstack Engineer course?",
-        a: "Freshers, engineering students, and IT professionals aiming to master full stack engineering and cloud DevOps practices.",
+        q: "Why should I learn DevOps alongside Full Stack development?",
+        a: "Modern tech companies seek full-stack engineers who also know how to package (Docker), automate (Jenkins/CI-CD), and deploy (AWS/Nginx) applications. Full-stack developers with DevOps skills command 30-50% higher starting salaries than pure frontend or backend developers.",
+      },
+      {
+        q: "Do I need prior coding experience to join Devstack?",
+        a: "No prior experience is necessary. We start from basic web foundations, Git, and JavaScript, then progressively advance into React, backend APIs, Docker, and CI/CD pipelines.",
+      },
+      {
+        q: "What hands-on projects will I build?",
+        a: "You will build 5 real-world projects including a containerized full-stack application, an automated Jenkins CI/CD pipeline, an Nginx reverse proxy with SSL, and an enterprise cloud capstone on AWS.",
+      },
+      {
+        q: "How does placement support work for Devstack students?",
+        a: "Through Vinsup's Job Readiness Program (JRP) and Interview Opportunity Program (IOP), you will get a polished GitHub portfolio, ATS-formatted resume, technical mock interviews, and guaranteed interview opportunities with top software companies.",
+      },
+      {
+        q: "Where are classes conducted?",
+        a: "At our Ganapathy campus in Coimbatore with high-speed internet and dedicated workstations, as well as live online interactive sessions.",
       },
     ],
   },
