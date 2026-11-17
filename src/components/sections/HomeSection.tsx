@@ -1,9 +1,13 @@
 import Link from "next/link";
 import { siteData, coursesData } from "@/data/academyData";
+import HeroSlider from "@/components/HeroSlider";
 
 export default function HomeSection() {
   return (
     <div className="w-full bg-white">
+      {/* Hero Carousel Slider */}
+      <HeroSlider />
+
       {/* Intro Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="max-w-3xl">
